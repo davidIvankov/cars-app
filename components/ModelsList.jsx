@@ -16,6 +16,7 @@ class ModelsList extends React.Component {
        } else {
            this.store = vehicleModelStore 
        }
+       this.store.setPage(window.location.href.match(/\d+$/g))
     }
 
     componentDidUpdate(){
