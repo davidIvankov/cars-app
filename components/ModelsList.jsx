@@ -3,7 +3,8 @@ import ModelsListItem from "./ModelsListItem"
 import Link from "next/link";
 import React from "react";
 
-import { vehicleMakeStore, vehicleModelStore } from "@/stores/VehicleStore";
+import { vehicleMakeStore, vehicleModelStore } from "../stores/VehicleStore";
+import Sort from "./Sort";
 
 class ModelsList extends React.Component {
     constructor(props){
@@ -31,9 +32,10 @@ class ModelsList extends React.Component {
 
  render(){
 if (!this.store) return <div>Loading...</div>
+console.log(this.store.result)
     return (
         <div>
-            
+            <Sort store={this.store}></Sort>
             <ol>{this.store.result.item.map((item)=>{
             return (<ModelsListItem
                         item={item} 

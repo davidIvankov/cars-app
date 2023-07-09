@@ -1,6 +1,6 @@
 import ModelsList from "@/components/ModelsList";
 import Link from "next/link";
-import { vehicleModelStore } from "@/stores/VehicleStore";
+import { vehicleModelStore } from "../stores/VehicleStore";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 

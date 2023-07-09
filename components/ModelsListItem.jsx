@@ -1,6 +1,6 @@
-import VehicleService from "@/common/VehicleService";
+import VehicleService from "../common/VehicleService";
 import { useEffect, useState } from "react";
-import { vehicleMakeStore, vehicleModelStore } from "@/stores/VehicleStore";
+
 import DeleteBtn from "./DeleteBtn";
 import { observer } from "mobx-react";
 

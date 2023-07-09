@@ -1,9 +1,18 @@
 import { useEffect, useState } from "react";
-import VehicleService from "@/common/VehicleService";
+import VehicleService from "../common/VehicleService";
+import { observer } from "mobx-react";
 
-const SelectMake=(props)=> {
+const SelectMake=observer((props)=> {
     const vehicleService = new VehicleService('vehicleMake')
     const [make,setMake]= useState();
+
+    const onFilter=async(e)=>{
+        if (props.role==='filter') {
+            if (!e.target.value) props.store.setSearchQuery(`SELECT *`)
+            else props.store.setSearchQuery(`WHERE makeId ='${e.target.value}'`)
+        } else return
+
+    }
     useEffect(()=>{
        let arr=[];
         vehicleService.get('?page=1')
@@ -14,7 +23,7 @@ const SelectMake=(props)=> {
                                 arr.push(...data.item)
                             })
                         }
-                        setMake(arr)
+                        setMake([{id:'',Name:'none'},...arr])
                       })
 
     },[])
@@ -22,15 +31,15 @@ const SelectMake=(props)=> {
 
 
     return (
-        <label htmlFor="makeId">Manufacturer: 
-            <select id="makeId" name="makeId"  defaultValue={props.id?props.id:make[0].id} required>
+        <label htmlFor="makeId" > {props.role === 'filter'?'filter by manufacturer:': 'Manufacturer:'}
+            <select id="makeId" name="makeId" onChange={onFilter}  defaultValue={props.id?props.id:make[0].id} required={props.role === 'filter'?false:true}>
                 {make.map((item) => {
-                    return <option key={item.id} value={item.id}>{item.Name}</option>
+                    return <option key={item.id} value={item.id} >{item.Name}</option>
                 })}
             </select>
         </label>
     )
     
-}
+})
 
 export default SelectMake

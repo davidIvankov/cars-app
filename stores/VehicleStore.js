@@ -31,13 +31,21 @@ class VehicleStore {
             page: observable,
             form: observable,
             one: observable,
+            searchQuery: observable,
+            setSearchQuery: action,
             setOne: action,
-            getForm: action
+            getForm: action,
+            setSort: action,
+            sort: observable
         })
     }
 
     getForm=(form)=>{
         this.form = form
+    }
+
+    setSearchQuery=(query)=>{
+        runInAction(()=> this.searchQuery=query)
     }
 
     toggleForm= async(id,store)=>{
@@ -64,6 +72,10 @@ class VehicleStore {
         }
         
         
+    }
+
+    setSort(sort){
+        runInAction(()=>this.sort = sort)
     }
 
     setPage(num){
