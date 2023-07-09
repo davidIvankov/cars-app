@@ -1,8 +1,5 @@
 import ModelsList from "@/components/ModelsList";
 import Link from "next/link";
-import { vehicleMakeStore } from "@/stores/VehicleStore";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 
 export default function Home(){
   return(
