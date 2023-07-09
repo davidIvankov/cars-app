@@ -3,7 +3,7 @@ import VehicleService from "@/common/VehicleService";
 
 const SelectMake=(props)=> {
     const vehicleService = new VehicleService('vehicleMake')
-    const [make, setMake]= useState();
+    const [make,setMake]= useState();
     useEffect(()=>{
        let arr=[];
         vehicleService.get('?page=1')
@@ -12,17 +12,18 @@ const SelectMake=(props)=> {
                         for (let i = 2; i<=Math.ceil(data.totalRecords/10); i++){
                             vehicleService.get(`?page=${i}`).then((data)=>{
                                 arr.push(...data.item)
-                                setMake(arr)
                             })
                         }
+                        setMake(arr)
                       })
 
     },[])
-
     if (!make) return <>Loading...</>
+
+
     return (
-        <label htmlFor="makeId">Manufacturer:
-            <select id="makeId" name="makeId">
+        <label htmlFor="makeId">Manufacturer: 
+            <select id="makeId" name="makeId"  defaultValue={props.id?props.id:make[0].id} required>
                 {make.map((item) => {
                     return <option key={item.id} value={item.id}>{item.Name}</option>
                 })}

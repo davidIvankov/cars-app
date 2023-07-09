@@ -31,11 +31,16 @@ class ModelsList extends React.Component {
 
  render(){
 if (!this.store) return <div>Loading...</div>
-
     return (
         <div>
+            
             <ol>{this.store.result.item.map((item)=>{
-            return <ModelsListItem item={item} key={item.id} model={this.store.vehicleSchema}></ModelsListItem>
+            return (<ModelsListItem
+                        item={item} 
+                        key={item.id} 
+                        model={this.store.vehicleSchema}
+                        store={this.store}
+                    ></ModelsListItem>)
             })
             }
             </ol>
@@ -44,7 +49,7 @@ if (!this.store) return <div>Loading...</div>
                 query:{page: page}}} passHref={true} key={page}>{page}</Link>
                 })}
             </div>
-            <button onClick={this.store.toggleForm}></button>
+            <button onClick={()=>{this.store.toggleForm(undefined,this.store)}}></button>
            {this.store.form}
         </div>
     )
