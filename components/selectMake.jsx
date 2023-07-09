@@ -23,7 +23,7 @@ const SelectMake=observer((props)=> {
                                 arr.push(...data.item)
                             })
                         }
-                        setMake([{id:'none',Name:''},...arr])
+                        setMake([{id:'',Name:'none'},...arr])
                       })
 
     },[])
