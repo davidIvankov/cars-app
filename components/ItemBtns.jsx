@@ -3,7 +3,7 @@ import VehicleService from "../common/VehicleService"
 
 
 
-const DeleteBtn=observer((props)=>{
+const ItemBtns=observer((props)=>{
     const vehicleService = new VehicleService('vehicleModel')
     const onDelete= function(){
        vehicleService.get(`?searchQuery=WHERE makeId ='${props.obj.id}'`)
@@ -32,4 +32,4 @@ const DeleteBtn=observer((props)=>{
 
 })
 
-export default DeleteBtn
+export default ItemBtns

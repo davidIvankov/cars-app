@@ -1,7 +1,11 @@
-import ModelsList from "../components/ModelsList";
+import List from "../components/List";
 import Link from "next/link";
+import { vehicleModelStore } from "@/stores/VehicleStore";
+import { useRouter } from "next/router";
 
 export default function Home(){
+
+  const page = useRouter();
   
   return(
     <>
@@ -9,7 +13,7 @@ export default function Home(){
     <ul>
     <li><Link href={`manufacturers/1`}>Manufacturers</Link></li>
     </ul>
-    <ModelsList></ModelsList>
+    <List store={vehicleModelStore} page={page.query.page}></List>
     </>
   )
 }

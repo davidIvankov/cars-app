@@ -1,5 +1,6 @@
 import VehicleService from '@/common/VehicleService';
-import AddModel from '@/components/addModel';
+import Form from '@/components/Form';
+import AddModel from '@/components/Form';
 import { runInAction,decorate, observable, makeObservable, action } from 'mobx'
 
 
@@ -13,7 +14,7 @@ class VehicleStore {
     pages=[];
     page='1';
     form='';
-    searchQuery="SELECT *";
+    searchQuery="WHERE Name LIKE '%'";
     status="initial";
     vehicleSchema;
     one={
@@ -32,7 +33,6 @@ class VehicleStore {
             form: observable,
             one: observable,
             searchQuery: observable,
-            setSearchQuery: action,
             setOne: action,
             getForm: action,
             setSort: action,
@@ -45,18 +45,22 @@ class VehicleStore {
     }
 
     setSearchQuery=(query)=>{
-        runInAction(()=> this.searchQuery=query)
+        if (query !== 'none'){
+        runInAction(()=>{
+             this.searchQuery=query
+        })
+    }
     }
 
     toggleForm= async(id,store)=>{
         if(typeof id === 'string') {
            await this.getOne(`/${id}`)
 
-            const updateForm= <AddModel
+            const updateForm= <Form
                                 store={store} 
                                 id={id}
                                 item={this.one}
-                            ></AddModel>
+                            ></Form>
             runInAction(()=>{
                 this.getForm(updateForm)
             })

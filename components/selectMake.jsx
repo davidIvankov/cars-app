@@ -8,8 +8,8 @@ const SelectMake=observer((props)=> {
 
     const onFilter=async(e)=>{
         if (props.role==='filter') {
-            if (!e.target.value) props.store.setSearchQuery(`SELECT *`)
-            else props.store.setSearchQuery(`WHERE makeId ='${e.target.value}'`)
+        if (e.target.value === '') {props.store.setSearchQuery(`WHERE makeId LIKE '%'`)}
+       else props.store.setSearchQuery(`WHERE makeId ='${e.target.value}'`)
         } else return
 
     }
@@ -23,7 +23,7 @@ const SelectMake=observer((props)=> {
                                 arr.push(...data.item)
                             })
                         }
-                        setMake([{id:'',Name:'none'},...arr])
+                        setMake([{id:'none',Name:''},...arr])
                       })
 
     },[])

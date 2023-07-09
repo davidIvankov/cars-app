@@ -2,7 +2,7 @@ import { observer } from "mobx-react"
 import SelectMake from "./selectMake"
 
 
-const AddModel = observer((props)=>{
+const Form = observer((props)=>{
    const onAddToMake= async(e)=>{
         e.preventDefault()
         const data = {
@@ -47,4 +47,4 @@ const AddModel = observer((props)=>{
 
 })
 
-export default AddModel
+export default Form
