@@ -1,1 +1,47 @@
+.nav{
+    width: 33vw;
+    margin-top: -4vw;
+    background-color: rgb(123, 212, 228);
+    height: 4vw;
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    align-items: center;
+    margin-left: 15vw;
+    
+}
 
+
+.link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    border: 1px solid rgb(123, 212, 228);
+    border-radius: 15px 0 0 0;
+    height: 100%;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.activeLink{
+    background-color: rgb(13, 167, 167);
+}
+.link1 {
+    border-radius: 15px 0 0 0;
+}
+.link2{
+    border-radius: 0 15px 0 0;
+}
+.link1:hover, .link2:hover{
+    background-color: rgb(13, 167, 167);
+}
+
+
+
+.container {
+    display: flex;
+    justify-content: flex-start;
+
+}

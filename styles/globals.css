@@ -1,6 +1,4 @@
-.invisible{
-    display: none;
-}
-.visible{
-    display: block;
+* {
+    padding: 0;
+    margin: 0;
 }

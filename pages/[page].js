@@ -9,10 +9,6 @@ export default function Home(){
   
   return(
     <>
-    <h1>Cars</h1>
-    <ul>
-    <li><Link href={`manufacturers/1`}>Manufacturers</Link></li>
-    </ul>
     <List store={vehicleModelStore} page={page.query.page}></List>
     </>
   )

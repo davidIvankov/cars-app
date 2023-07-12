@@ -67,7 +67,7 @@ class VehicleStore {
         } else if(!this.form){
 
             runInAction(()=>{
-                this.getForm(<AddModel store={store} ></AddModel>)
+                this.getForm(<Form store={store} ></Form>)
             })
         } else {
             runInAction(()=>{
