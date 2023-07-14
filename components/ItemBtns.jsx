@@ -1,5 +1,6 @@
 import { observer } from "mobx-react-lite"
 import VehicleService from "../common/VehicleService"
+import styles from '../styles/List.module.css'
 
 
 
@@ -21,12 +22,16 @@ const ItemBtns=observer((props)=>{
 
     const onToggleEdit = function(){
         props.store.toggleForm(props.obj.id,props.store)
+        window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+    });
     }
 
     return (
-        <div>
-            <button onClick={onDelete}>DELETE</button>
-            <button onClick={onToggleEdit}>EDIT</button>
+        <div className={styles.btns}>
+            <button className={styles.delete} onClick={onDelete}>DELETE</button>
+            <button className={styles.update} onClick={onToggleEdit}>EDIT</button>
         </div>
     )
 

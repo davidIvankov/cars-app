@@ -16,7 +16,6 @@
     align-items: center;
     justify-content: center;
     width: 50%;
-    border: 1px solid rgb(123, 212, 228);
     border-radius: 15px 0 0 0;
     height: 100%;
     color: white;
@@ -36,6 +35,15 @@
 }
 .link1:hover, .link2:hover{
     background-color: rgb(13, 167, 167);
+}
+
+.footer {
+    height: 5vw;
+    width: 100vw;
+    background-color: rgb(46, 45, 45);
+    margin-top: 2vw;
+    
+
 }
 
 

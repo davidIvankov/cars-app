@@ -64,14 +64,14 @@ class VehicleStore {
             runInAction(()=>{
                 this.getForm(updateForm)
             })
-        } else if(!this.form){
-
+        } else if (this.one && this.form){
             runInAction(()=>{
+                this.setOne(undefined)
                 this.getForm(<Form store={store} ></Form>)
             })
         } else {
             runInAction(()=>{
-                this.getForm('')
+                this.getForm(<Form store={store} ></Form>)
             })
         }
         

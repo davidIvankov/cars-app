@@ -1,0 +1,76 @@
+
+.item{
+    width: 20vw;
+    height: 25vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    box-shadow: 7px -7px 13px -4px rgba(0, 0, 0, 0.1), 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    background-color: #f3f4f6
+}
+.row {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+}
+.pages{
+    display: flex;
+    justify-content: center;
+    gap: 1vw;
+    margin-top: 1vw;
+}
+
+.page {
+    text-shadow: 2px 12px 10px #000000;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: black;
+}
+
+.page:hover{
+    text-decoration: underline;
+}
+
+.grid {
+    margin-top: 2vw;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    gap: 1vw;
+    width: 100%;
+
+}
+
+.delete {
+    border: none;
+    border-radius: 15px;
+    background-color: red;
+    color: white;
+    width: 7vw;
+}
+.btns {
+    display: flex;
+    gap: .5vw;
+}
+.update {
+    border: none;
+        border-radius: 15px;
+        background-color: rgb(13, 167, 167);
+        color: white;
+        width: 7vw;
+    
+}
+.texts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vw;
+}
+.name{
+    font-weight: 1000;
+    font-size: 1.5rem;
+}
+.img {
+    width: 10vw;
+}

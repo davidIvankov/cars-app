@@ -1,0 +1,104 @@
+.Form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(13, 167, 167);
+    gap: 1vw;
+    margin-left: 15vw;
+    border-radius: 0 15px 15px 15px;
+    height: 11vw;
+    width: fit-content;
+}
+
+.p {
+    color: white;
+    font-weight: 500;
+    font-size: .9rem;
+}
+.pMain {
+    font-size: 1.1rem;
+}
+
+.buttons input {
+    appearance: none;
+    cursor: pointer;
+    border-radius: 2px;
+    padding: 5px 10px;
+    background: rgb(99, 71, 20);
+    color: white;
+    font-size: 15px;
+    font-family: sans-serif;
+    transition: all 0.1s;
+    font-size: .7rem
+}
+.buttons input:checked {
+    background: green;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 1px 0px #808080;
+}
+
+.buttons input::before {
+    content: attr(label);
+    text-align: center;
+}
+
+.div {
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    justify-content: center;
+}
+.div:first-of-type{
+    margin-left: 5vw;
+}
+.label {
+    font-size: .9rem;
+    color: white;
+}
+.input {
+    border: none;
+    border-radius: 5px;
+    height: 2.5rem;
+    font-size: 1rem;
+    width: 17vw;
+}
+.btns{
+    display: flex;
+    flex-direction: column;
+    gap: .5vw
+}
+.newBtn{
+    background-color: inherit;
+    border:none;
+    color: white
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    margin: 1vw;
+    width: 21vw;
+    padding: 1vw;
+    background-color: orange;
+    border-radius: 15px;
+    gap: .5vw;
+    
+}
+
+.btn {
+    width: 13vw;
+    height: 3vw;
+    background-color: orange;
+    color: white;
+    font-weight: 700;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.4rem;
+    margin-right: 5vw;
+    margin-top: 2.5vw;
+}
+
+.newBtn:hover{
+    color: rgb(216, 212, 212);
+    cursor: pointer;
+}

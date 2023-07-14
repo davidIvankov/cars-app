@@ -13,18 +13,18 @@ export default function NavBtns(){
             className={
                 `${styles.link} 
                 ${styles.link1} 
-                ${router.pathname.includes('manufacturers')?styles.activeLink:''}`
-            } 
-            href={`manufacturers/1`} 
-        ><p>Manufacturers</p></Link>
-        <Link 
-            className={
-                `${styles.link} 
-                ${styles.link2} 
                 ${router.pathname.includes('manufacturers')?'':styles.activeLink}`
             } 
             href={'/1'}
         ><p>Models</p></Link>
+        <Link 
+            className={
+                `${styles.link} 
+                ${styles.link2} 
+                ${router.pathname.includes('manufacturers')?styles.activeLink:''}`
+            } 
+            href={`manufacturers/1`} 
+        ><p>Manufacturers</p></Link>
       </nav>
     </div>
   )

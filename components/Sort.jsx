@@ -1,5 +1,6 @@
 import { observer } from "mobx-react"
 import SelectMake from "./selectMake"
+import styles from '../styles/Form.module.css'
 
     const Sort = observer(({store})=>{
         const onSelect = async(e)=>{
@@ -9,14 +10,30 @@ import SelectMake from "./selectMake"
 
     if (store.vehicleSchema === 'vehicleModel'){
         return(
-            <div>
-                <p>Sort by:</p>
-                <fieldset>
-                    <label htmlFor="sort_model" name='sort'>model(alphabeticly)</label>
-                    <input id="sort_model" type="radio" name='sort' value='Name' onClick={onSelect} defaultChecked></input>
-                    <label htmlFor="sort_make">manufacturer(alphabeticly)</label>
-                    <input id="sort_make" type="radio" name='sort' value='makeId' onClick={onSelect}></input>
-                </fieldset>
+            <div className={styles.column}>
+                <p className={`${styles.p} ${styles.pMain}`}>Filters</p>
+                <p className={styles.p}>Sort</p>
+                    <div className={styles.buttons}>
+                        <input
+                            label='model(alphabeticly)'
+                            className={styles.none} 
+                            id="sort_model" 
+                            type="radio" 
+                            name='sort' 
+                            value='Name' 
+                            onClick={onSelect} 
+                            defaultChecked
+                        ></input>
+                        <input 
+                            label='manufacturer(alphabeticly)'
+                            className={styles.none}
+                            id="sort_make" 
+                            type="radio" 
+                            name='sort' 
+                            value='makeId' 
+                            onClick={onSelect}
+                        ></input>
+                    </div>
                 <SelectMake role='filter' store={store}></SelectMake>
             </div>)
     }        

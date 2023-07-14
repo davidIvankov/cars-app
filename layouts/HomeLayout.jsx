@@ -1,6 +1,7 @@
 import NavBtns from '@/common/NavBtns'
 import Navbar from '../common/Navbar'
-import BackgroundImageLayout from './BackgroundImageLayout'
+import BackgroundImageLayout from './BackgroundImageLayout';
+import styles from '../styles/Home.module.css'
 export default function HomeLayout({ children }){
     return (
         <>
@@ -10,7 +11,7 @@ export default function HomeLayout({ children }){
                 <NavBtns></NavBtns>
                 {children}
             </main>
-            <footer>sexanje</footer>
+            <footer className={styles.footer}></footer>
         </>
     )
 
