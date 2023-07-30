@@ -1,36 +1,19 @@
-import { useEffect, useState } from "react";
-import VehicleService from "../common/VehicleService";
 import { observer } from "mobx-react";
 import styles from '../styles/Form.module.css'
 
 const SelectMake=observer((props)=> {
-    const vehicleService = new VehicleService('vehicleMake')
-    const [make,setMake]= useState();
-
+    const make = [{Name:'any',id:''}, ...props.make.all]
     const onFilter=async(e)=>{
         if (props.role==='filter') {
         if (e.target.value === '') {props.store.setSearchQuery(`WHERE makeId LIKE '%'`)}
        else props.store.setSearchQuery(`WHERE makeId ='${e.target.value}'`)
-        } else return
-
+        } else {
+            props.make.getOne(`/${e.target.value}`)
+        }
     }
-    useEffect(()=>{
-       let arr=[];
-        vehicleService.get('?page=1')
-                      .then((data)=>{
-                        arr.push(...data.item)
-                        for (let i = 2; i<=Math.ceil(data.totalRecords/10); i++){
-                            vehicleService.get(`?page=${i}`).then((data)=>{
-                                arr.push(...data.item)
-                            })
-                        }
-                        setMake([{id:'',Name:'Any'},...arr])
-                      })
-
-    },[])
     if (!make) return <>Loading...</>
 
-
+    if (make[0]){
     return (
         <div className={styles.div}>
             <label htmlFor="makeId" className={styles.label} > 
@@ -49,8 +32,10 @@ const SelectMake=observer((props)=> {
                     })}
                 </select>
         </div>
-        
     )
+                }
+        
+    
     
 })
 

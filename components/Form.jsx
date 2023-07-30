@@ -2,7 +2,6 @@ import { observer } from "mobx-react"
 import SelectMake from "./selectMake"
 import styles from '../styles/Form.module.css'
 
-
 const Form = observer((props)=>{
    const isMake = props.store.vehicleSchema === 'vehicleMake'
    const onAddToMake= async(e)=>{
@@ -11,9 +10,16 @@ const Form = observer((props)=>{
             Abv: e.target.Abv.value,
             Name: e.target.Name.value,
         };
-        if (props.id) props.store.updateAsync(data, props.id)
-        else props.store.createAsync(data)
+        if (props.id) {
+            props.store.updateAsync(data, props.id)
+            alert(`Updated Manufacturer:\nOld\nName: ${props.item.Name} Abv: ${props.item.Abv}\nNew\nName: ${e.target.Name.value} Abv: ${e.target.Abv.value}`)
+        } else {
+            props.store.createAsync(data)
+            alert(`new manufacturer was added:\nName: ${e.target.Name.value}\nAbv: ${e.target.Abv.value}`)
+        }
+        props.store.toggleForm(undefined, props.store)
     }
+
     const onAddToModel= async(e)=>{
         e.preventDefault()
         const data = {
@@ -21,13 +27,21 @@ const Form = observer((props)=>{
             Abv: e.target.Abv.value,
             Name: e.target.Name.value,
         };
-        if (props.id) props.store.updateAsync(data, props.id)
-        else props.store.createAsync(data)
+        const newMake = props.make.one.Name
+        if (props.id) { 
+            props.store.updateAsync(data, props.id)
+            alert(`Updated Model:\nOld\nManufacturer: ${props.one} Name: ${props.item.Name} Abv: ${props.item.Abv}\nNew\nManufacturer: ${newMake} Name: ${e.target.Name.value} Abv: ${e.target.Abv.value}`)
+        }
+        else {
+            props.store.createAsync(data)
+            alert(`new Model was added:\nManufacturer: ${newMake} Name: ${e.target.Name.value} Abv: ${e.target.Abv.value}`)
+        }
+        props.store.toggleForm(undefined, props.store)
     };
 
     return(
         <form onSubmit={isMake?onAddToMake:onAddToModel} className={styles.Form} >
-            {isMake?'':<SelectMake id={props.item?props.item.makeId:undefined}></SelectMake>}
+            {isMake?'':<SelectMake id={props.item?props.item.makeId:undefined} make={props.make}></SelectMake>}
             <div className={styles.div}>
                 <label htmlFor="Name" className={styles.label}>NAME*</label>
                 <input 
@@ -60,7 +74,6 @@ const Form = observer((props)=>{
             </div>
         </form>
     )
-
 })
 
 export default Form

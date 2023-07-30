@@ -58,4 +58,9 @@ export default class VehicleService {
 
 }
 
+const vehicleModel = new VehicleService('vehicleModel')
+const vehicleMake = new VehicleService('vehicleMake')
+
+export {vehicleMake, vehicleModel}
+
 

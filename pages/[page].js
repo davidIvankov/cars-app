@@ -2,6 +2,7 @@ import List from "../components/List";
 import Link from "next/link";
 import { vehicleModelStore } from "@/stores/VehicleStore";
 import { useRouter } from "next/router";
+import { vehicleMakeStore } from "@/stores/VehicleStore";
 
 export default function Home(){
 
@@ -9,7 +10,7 @@ export default function Home(){
   
   return(
     <>
-    <List store={vehicleModelStore} page={page.query.page}></List>
+    <List store={vehicleModelStore} make={vehicleMakeStore} page={page.query.page}></List>
     </>
   )
 }

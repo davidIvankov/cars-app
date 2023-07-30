@@ -2,35 +2,40 @@ import { observer } from "mobx-react"
 import ListItem from "./ListItem"
 import Link from "next/link";
 import Sort from "./Sort";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styles from '../styles/List.module.css'
 import Form from "./Form";
+import { vehicleMakeStore } from "@/stores/VehicleStore";
 
 const List= observer((props)=>  {
-    const [list, setList]= useState()
+    
     const getList = async()=>{
         await props.store.getAsync()
         props.store.setPage(props.page)
-        setList(props.store)
 
+    }
+    const getSelect= async()=>{
+        props.make.getAll()
     }
     useEffect(()=>{
         getList()
-    })
+        if (props.make) getSelect()
+    },[props.store.status, props.store.result])
      
 
       
-    if (!list) return <div>Loading...</div>
+    if (!props.store) return <div>Loading...</div>
     return (
         <div>
-            {list.form?list.form:<Form store={props.store}></Form>}
+            {props.store.form?props.store.form:<Form store={props.store} make={props.make}></Form>}
             <div className={styles.row}>
                 <div className={styles.flex}>
-                    <Sort store={list}></Sort>
+                    <Sort store={props.store}></Sort>
                 </div>
             
-                <div className={styles.grid}>{list.result.item.map((item)=>{
+                <div className={styles.grid}>{props.store.result.item.map((item, index)=>{
                 return (<ListItem
+                            index={index}
                             item={item} 
                             key={item.id} 
                             model={props.store.vehicleSchema}
@@ -40,7 +45,7 @@ const List= observer((props)=>  {
                 }
                 </div>
             </div>
-            <div className={styles.pages}>{list.pages.map((page)=>{ 
+            <div className={styles.pages}>{props.store.pages.map((page)=>{ 
                 return <Link className={styles.page} href={{pathname:'/manufacturers/[page]',
                 query:{page: page}}} passHref={true} key={page}>{page}</Link>
                 })}

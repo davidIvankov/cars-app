@@ -49,6 +49,13 @@
     color: white;
     width: 7vw;
 }
+.delete:hover{
+    cursor: pointer;
+    background-color: #f3f4f6;
+    color: red;
+    border: 1px solid red;
+    margin-top: -2px;
+}
 .btns {
     display: flex;
     gap: .5vw;
@@ -60,6 +67,13 @@
         color: white;
         width: 7vw;
     
+}
+.update:hover {
+    cursor: pointer;
+    background-color: #f3f4f6;
+    color: rgb(13, 167, 167);
+    border: 1px solid rgb(13, 167, 167);
+    margin-top: -2px;
 }
 .texts{
     display: flex;

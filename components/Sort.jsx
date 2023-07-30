@@ -1,6 +1,7 @@
 import { observer } from "mobx-react"
 import SelectMake from "./selectMake"
 import styles from '../styles/Form.module.css'
+import { vehicleMakeStore } from "@/stores/VehicleStore"
 
     const Sort = observer(({store})=>{
         const onSelect = async(e)=>{
@@ -34,7 +35,7 @@ import styles from '../styles/Form.module.css'
                             onClick={onSelect}
                         ></input>
                     </div>
-                <SelectMake role='filter' store={store}></SelectMake>
+                <SelectMake role='filter' store={store} make={vehicleMakeStore}></SelectMake>
             </div>)
     }        
     else return
