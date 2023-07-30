@@ -8,7 +8,6 @@ import { vehicleMakeStore } from "@/stores/VehicleStore"
             props.store.setSort(e.target.value)
         }
 
-    if (props.store.vehicleSchema === 'vehicleModel'){
         return(
             <div className={styles.column}>
                 <p className={`${styles.p} ${styles.pMain}`}>Filters</p>
@@ -34,10 +33,10 @@ import { vehicleMakeStore } from "@/stores/VehicleStore"
                             onClick={onSelect}
                         ></input>
                     </div>
-                <SelectMake role='filter' store={props.store} make={vehicleMakeStore}></SelectMake>
+                {props.store.vehicleSchema === 'vehicleModel'?
+                <SelectMake role='filter' store={props.store} make={vehicleMakeStore}></SelectMake>:''
+                }
             </div>)
-    }        
-    else return
 })
 
 export default Sort

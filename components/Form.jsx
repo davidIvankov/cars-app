@@ -10,19 +10,25 @@ const Form = observer((props)=>{
             Abv: e.target.Abv.value,
             Name: e.target.Name.value,
         };
-        const duplicates =  props.store.result.item.find((a)=>{return a.Abv === e.target.Abv.value || a.Name === e.target.Name.value})
-        if (duplicates){
+        const duplicates =  props.store.result.item.filter((a)=>{return a.Abv === e.target.Abv.value || a.Name === e.target.Name.value})
+        
+        if (props.id) {
+            if (duplicates.length > 1){
             alert('Name and abbreviation have to be unique')
         } else {
-        if (props.id) {
             props.store.updateAsync(data, props.id)
             alert(`Updated Manufacturer:\nOld\nName: ${props.item.Name} Abv: ${props.item.Abv}\nNew\nName: ${e.target.Name.value} Abv: ${e.target.Abv.value}`)
+        }
+        } else {
+            if (duplicates.length > 0){
+            alert('Name and abbreviation have to be unique')
         } else {
             props.store.createAsync(data)
             alert(`new manufacturer was added:\nName: ${e.target.Name.value}\nAbv: ${e.target.Abv.value}`)
         }
+        }
         props.store.toggleForm(undefined, props.store)
-    }
+    
     }
 
     const onAddToModel= async(e)=>{
@@ -32,21 +38,26 @@ const Form = observer((props)=>{
             Abv: e.target.Abv.value,
             Name: e.target.Name.value,
         };
-        const duplicates =  props.store.result.item.find((a)=>{return a.Abv === e.target.Abv.value || a.Name === e.target.Name.value})
-        if (duplicates){
-            alert('Name and abbreviation have to be unique')
-        } else {
+        const duplicates =  props.store.result.item.filter((a)=>{return a.Abv === e.target.Abv.value || a.Name === e.target.Name.value})
+    
         const newMake = props.make.one.Name
         if (props.id) { 
+            if (duplicates.length > 1){
+            alert('Name and abbreviation have to be unique')
+        } else {
             props.store.updateAsync(data, props.id)
             alert(`Updated Model:\nOld\nManufacturer: ${props.one} Name: ${props.item.Name} Abv: ${props.item.Abv}\nNew\nManufacturer: ${newMake} Name: ${e.target.Name.value} Abv: ${e.target.Abv.value}`)
         }
+        }
         else {
+            if (duplicates.length > 0){
+            alert('Name and abbreviation have to be unique')
+        } else {
             props.store.createAsync(data)
             alert(`new Model was added:\nManufacturer: ${newMake} Name: ${e.target.Name.value} Abv: ${e.target.Abv.value}`)
         }
+        }
         props.store.toggleForm(undefined, props.store)
-    }
     };
 
     return(

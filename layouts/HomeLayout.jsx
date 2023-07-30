@@ -11,7 +11,6 @@ export default function HomeLayout({ children }){
                 <NavBtns></NavBtns>
                 {children}
             </main>
-            <footer className={styles.footer}></footer>
         </>
     )
 
