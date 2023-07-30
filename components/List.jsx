@@ -5,7 +5,7 @@ import Sort from "./Sort";
 import { useEffect } from "react";
 import styles from '../styles/List.module.css'
 import Form from "./Form";
-import { vehicleMakeStore } from "@/stores/VehicleStore";
+
 
 const List= observer((props)=>  {
     
@@ -19,9 +19,12 @@ const List= observer((props)=>  {
     }
     useEffect(()=>{
         getList()
-        if (props.make) getSelect()
     },[props.store.status, props.store.result])
-     
+    if (props.make){
+        useEffect(()=>{
+            getSelect()
+        },[props.make.all,props.make.status])
+    }
 
       
     if (!props.store) return <div>Loading...</div>
@@ -30,7 +33,7 @@ const List= observer((props)=>  {
             {props.store.form?props.store.form:<Form store={props.store} make={props.make}></Form>}
             <div className={styles.row}>
                 <div className={styles.flex}>
-                    <Sort store={props.store}></Sort>
+                    <Sort store={props.store} make={props.make}></Sort>
                 </div>
             
                 <div className={styles.grid}>{props.store.result.item.map((item, index)=>{

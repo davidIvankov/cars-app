@@ -3,20 +3,19 @@ import SelectMake from "./selectMake"
 import styles from '../styles/Form.module.css'
 import { vehicleMakeStore } from "@/stores/VehicleStore"
 
-    const Sort = observer(({store})=>{
+    const Sort = observer((props)=>{
         const onSelect = async(e)=>{
-            store.setSort(e.target.value)
-        
+            props.store.setSort(e.target.value)
         }
 
-    if (store.vehicleSchema === 'vehicleModel'){
+    if (props.store.vehicleSchema === 'vehicleModel'){
         return(
             <div className={styles.column}>
                 <p className={`${styles.p} ${styles.pMain}`}>Filters</p>
                 <p className={styles.p}>Sort</p>
                     <div className={styles.buttons}>
                         <input
-                            label='model(alphabeticly)'
+                            label='alphabeticly'
                             className={styles.none} 
                             id="sort_model" 
                             type="radio" 
@@ -26,16 +25,16 @@ import { vehicleMakeStore } from "@/stores/VehicleStore"
                             defaultChecked
                         ></input>
                         <input 
-                            label='manufacturer(alphabeticly)'
+                            label='reverse alphabetical'
                             className={styles.none}
                             id="sort_make" 
                             type="radio" 
                             name='sort' 
-                            value='makeId' 
+                            value='Name|desc' 
                             onClick={onSelect}
                         ></input>
                     </div>
-                <SelectMake role='filter' store={store} make={vehicleMakeStore}></SelectMake>
+                <SelectMake role='filter' store={props.store} make={vehicleMakeStore}></SelectMake>
             </div>)
     }        
     else return

@@ -10,6 +10,10 @@ const Form = observer((props)=>{
             Abv: e.target.Abv.value,
             Name: e.target.Name.value,
         };
+        const duplicates =  props.store.result.item.find((a)=>{return a.Abv === e.target.Abv.value || a.Name === e.target.Name.value})
+        if (duplicates){
+            alert('Name and abbreviation have to be unique')
+        } else {
         if (props.id) {
             props.store.updateAsync(data, props.id)
             alert(`Updated Manufacturer:\nOld\nName: ${props.item.Name} Abv: ${props.item.Abv}\nNew\nName: ${e.target.Name.value} Abv: ${e.target.Abv.value}`)
@@ -19,6 +23,7 @@ const Form = observer((props)=>{
         }
         props.store.toggleForm(undefined, props.store)
     }
+    }
 
     const onAddToModel= async(e)=>{
         e.preventDefault()
@@ -27,6 +32,10 @@ const Form = observer((props)=>{
             Abv: e.target.Abv.value,
             Name: e.target.Name.value,
         };
+        const duplicates =  props.store.result.item.find((a)=>{return a.Abv === e.target.Abv.value || a.Name === e.target.Name.value})
+        if (duplicates){
+            alert('Name and abbreviation have to be unique')
+        } else {
         const newMake = props.make.one.Name
         if (props.id) { 
             props.store.updateAsync(data, props.id)
@@ -37,6 +46,7 @@ const Form = observer((props)=>{
             alert(`new Model was added:\nManufacturer: ${newMake} Name: ${e.target.Name.value} Abv: ${e.target.Abv.value}`)
         }
         props.store.toggleForm(undefined, props.store)
+    }
     };
 
     return(
