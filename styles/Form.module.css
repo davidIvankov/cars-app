@@ -65,7 +65,9 @@
 .btns{
     display: flex;
     flex-direction: column;
-    gap: .5vw
+    justify-content: center;
+    gap: .5vw;
+    height: 85%;
 }
 .newBtn{
     background-color: inherit;
@@ -86,16 +88,17 @@
 }
 
 .btn {
+    margin-top: 2.5rem;
     width: 13vw;
-    height: 3vw;
+    height: 2.5rem;
     background-color: orange;
     color: white;
     font-weight: 700;
     border: none;
-    border-radius: 15px;
+    border-radius: 5px;
     font-size: 1.4rem;
     margin-right: 5vw;
-    margin-top: 2.5vw;
+    
 }
 .btn:hover {
     cursor: pointer;
@@ -107,4 +110,148 @@
 .newBtn:hover{
     color: rgb(216, 212, 212);
     cursor: pointer;
+}
+
+@media (max-width:768px) {
+    .Form {
+        margin-left: 2vw;
+        height: 33vw;
+        width: 95vw;
+        display: grid;
+        grid-template-columns: 49vw 51vw;
+        grid-template-rows: 12vw 12vw;
+        gap: 0;
+        padding-left: 4vw;
+        padding-top: 2vw;
+    }
+
+    .input {
+        width: 47vw;
+    }
+
+    .div:first-of-type {
+        margin-left: 0;
+    }
+
+    .btn {
+        width: 47vw;
+        height: 2.5rem;
+        margin-top: 4.5vw;
+    }
+
+    .column {
+        width: 95vw;
+        padding-left: 3vw;
+        margin-left: 2vw;
+        flex-direction: row;
+        height: 20vw;
+    }
+
+    .pMain {
+        align-self: flex-start;
+        font-size: 1.4rem;
+    }
+
+    .buttons {
+        align-self: center;
+        margin-left: -4vw;
+        margin-top: 2vw;
+    }
+
+    .buttons input {
+        height: 4vw;
+        width: 47vw;
+    }
+
+    .buttons input::before {
+        font-size: 1rem;
+    }
+
+    .button label {
+        margin-top: 2vw;
+    }
+
+    .p:last-of-type {
+        margin-left: -9vw;
+        align-self: center;
+        margin-bottom: 8vw;
+    }
+
+}
+
+@media (max-width:540px){
+    .Form{
+        width: 99vw;
+        border-radius: 0 0 15px 15px;
+
+    }
+    .column {
+        width: 99vw;
+    }
+    .buttons{
+        margin-top: 3vw;
+    }
+}
+
+@media (max-width:414px) {
+   .Form {
+    width: 99vw;
+    border-radius: 0 0 15px 15px;
+    display: flex;
+    flex-direction: column;
+    height: 85vw
+   }
+   .div {
+    width: 100vw;
+    height: 40vw;
+   }
+   .input{
+    width: 95%;
+   }
+   .btns{
+    width: 100vw;
+    justify-content: flex-start;
+    gap: 2vw;
+   }
+   .btn{
+    width: 95%;
+   }
+   .newBtn{
+    align-self: flex-end;
+    margin-right: 5vw;
+   }
+
+   .column{
+    flex-direction: column;
+    height: 50vw;
+    width: 99vw;
+    margin-top: 5vw;
+   }
+
+   .p {
+    width: 90vw;
+    text-align: left;
+   }
+   .buttons input {
+       height: 10vw;
+       width: 95vw;
+       margin-left: 4vw;
+       align-self: flex-start;
+   }
+   .buttons{
+    margin-top: -8vw;
+   }
+}
+
+@media (max-width:280px) {
+    .Form, .column{
+        width: 115vw;
+    
+    }
+    .column{
+        height: 70vw;
+    }
+    .p {
+        width: 105vw;
+    }
 }

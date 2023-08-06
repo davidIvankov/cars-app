@@ -89,3 +89,62 @@
 .img {
     width: 10vw;
 }
+
+@media (max-width:768px) {
+    .grid {
+        margin-top: 2vw;
+        display: grid;
+        grid-template-columns: 50vw 50vw;
+        width: 100vw;
+        gap: 1vw;
+        align-items: center;
+        justify-items: center;
+
+    }
+    .row{
+        flex-direction: column;
+    }
+
+    .item {
+        height: 45vw;
+        width: 40vw;
+
+    }
+
+    .delete,
+    .update {
+        width: 14vw;
+    }
+
+}
+
+@media (max-width: 540px){
+    
+}
+
+@media (max-width:414px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 5vw;
+    }
+    .item {
+        width: 80%;
+        height: 100vw;
+    }
+        .delete,
+        .update {
+            width: 38vw;
+            height: 10vw;
+        }
+        .img {
+            width: 50vw;
+        }
+
+}
+
+@media (max-width: 280px){
+    .grid, .pages{
+        width: 123.5vw;
+    }
+   
+}

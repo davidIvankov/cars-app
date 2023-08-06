@@ -1,4 +1,4 @@
-.main{
+.main, .active {
     height: 27vw;
     width: 100vw;
     display: flex;
@@ -8,7 +8,11 @@
     gap: 1vw;
 }
 
-.h1{
+.header {
+    display: none;
+}
+
+.h1 {
     color: #fff;
     text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
     font-size: 2.5rem;
@@ -18,4 +22,57 @@
     color: #fff;
     text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
     font-size: 1.4rem;
+}
+
+@media (max-width:768px) {
+    .main, .active {
+        height: 37vw;
+        width: 105vw;
+
+    }
+
+    .h1 {
+        font-size: 2rem;
+    }
+
+    .h2 {
+        font-size: 1.1rem
+    }
+
+}
+
+@media (max-width:540px){
+    .main{
+        height: 17vw;
+        width: 110vw;
+        transition: height 1s;
+    }
+    .active{
+       height: 12vw;
+       background: aqua !important;
+    }
+    .infoActive{
+        width: 110vw;
+        height: 90vw;
+        transition: height 1s;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .infoActive .h1, .infoActive .h2{
+        display: block;
+    }
+
+    .h1, .h2 {
+        display: none;
+    }
+}
+@media (max-width:280px) {
+    .main, .infoActive{
+        width: 123.5vw;
+    }
+    .h1, .h2{
+        margin-left: 3vw;
+    }
 }

@@ -23,7 +23,7 @@ export default function NavBtns(){
                 ${styles.link2} 
                 ${router.pathname.includes('manufacturers')?styles.activeLink:''}`
             } 
-            href={`manufacturers/1`} 
+            href={`/manufacturers/1`} 
         ><p>Manufacturers</p></Link>
       </nav>
     </div>

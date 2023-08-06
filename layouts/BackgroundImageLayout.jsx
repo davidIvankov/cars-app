@@ -1,9 +1,11 @@
+import { observer } from 'mobx-react'
 import styles from '../styles/BackgroundImage.module.css'
+import { isAction } from 'mobx'
 
-export default function BackgroundImageLayout(){ 
+ const BackgroundImageLayout=observer(({store})=>{ 
     return(
     <>
-    <div className={styles.main} 
+    <div className={store.shouldShowInfo?styles.infoActive:styles.main} 
     style={{
       backgroundImage: 'url("https://wallpaperaccess.com/full/6191768.jpg")',
       backgroundSize: '100% 100%',
@@ -15,4 +17,5 @@ export default function BackgroundImageLayout(){
     </div>
     </>
   )
-}
+})
+export default BackgroundImageLayout
